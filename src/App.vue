@@ -1,32 +1,39 @@
 <template>
   <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
+    <div class="main">
+      <header-nav v-if="$route.meta.headerNav"></header-nav>
+      <router-view @get-play-id="getPlayId" @get-play-all-id="getPlayAllId"></router-view>
+      <player @get-play-id="getPlayId" v-show="playerId || songsId" :player-id="playerId" :songs-id="songsId"></player>
     </div>
-    <router-view/>
   </div>
 </template>
 
-<style lang="less">
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-}
+<script>
+import headerNav from "./components/base/headerNav.vue";
+import player from './components/base/player.vue';
 
-#nav {
-  padding: 30px;
-
-  a {
-    font-weight: bold;
-    color: #2c3e50;
-
-    &.router-link-exact-active {
-      color: #42b983;
+export default {
+  data(){
+    return{
+      playerId:null,
+      songsId:null,
     }
+  },
+  components: {
+    headerNav,
+    player,
+  },
+  methods:{
+    getPlayId(id){
+      this.playerId = id;
+    },
+    getPlayAllId(id){
+      this.songsId = id;
+    },
   }
-}
+};
+</script>
+
+<style lang="less">
+@import "./assets/css/base.css";
 </style>
