@@ -9,7 +9,7 @@
           <input type="text" placeholder="请输入手机号码" v-model="phone" />
         </div>
         <div class="item">
-          <input type="text" placeholder="请输入密码" v-model="password" />
+          <input type="password" placeholder="请输入密码" v-model="password" />
         </div>
         <div class="item">
           <button class="user-login" @click="submit">登录</button>
