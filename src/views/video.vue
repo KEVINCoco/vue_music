@@ -218,7 +218,7 @@ export default {
   beforeDestroy() {
     window.removeEventListener("scroll", this.handleScroll);
     if (this.jkFlag == true) {
-      this.getResourceLikeFun();
+      // this.getResourceLikeFun();
       this.jkFlag = false;
     }
   },

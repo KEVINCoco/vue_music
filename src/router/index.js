@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import recommend from "../views/recommend.vue"
+import recommend from '../views/recommend.vue'
 
 Vue.use(VueRouter)
 

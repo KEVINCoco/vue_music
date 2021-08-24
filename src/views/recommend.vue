@@ -72,6 +72,7 @@ export default {
       banners: null,
       personalized: null,
       recommend: [],
+      cookie: window.localStorage.getItem("cookie"),
     };
   },
   methods: {
@@ -92,9 +93,8 @@ export default {
       });
     },
     getRecommendResourceFun() {
-      let cookie = window.localStorage.getItem("cookie");
       getRecommendResource({
-        cookie,
+        cookie: this.cookie,
       }).then((data) => {
         this.recommend = data.recommend;
         this.recommend.reverse();
@@ -112,8 +112,8 @@ export default {
       slidesPerView: "auto",
       observer: true, //修改swiper自己或子元素时，自动初始化swiper
       observeParents: true,
-      roundLengths : true,
-      freeModeMomentumBounce : false,
+      roundLengths: true,
+      freeModeMomentumBounce: false,
     });
   },
   filters: {
@@ -129,7 +129,7 @@ export default {
 <style lang="less">
 @width: 100%;
 @height: 100%;
-body{
+body {
   background-color: rgb(233, 233, 233);
 }
 .banner {
@@ -213,7 +213,7 @@ body{
     position: relative;
     width: 6rem !important;
     height: 7.5rem;
-    margin: 0 .25rem;
+    margin: 0 0.25rem;
     .slide-img {
       img {
         width: 100%;
